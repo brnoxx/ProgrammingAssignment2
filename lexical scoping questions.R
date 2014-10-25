@@ -7,7 +7,7 @@
 ##When the closures counter_one and counter_two are run,
 ##each one modifies the counter in its enclosing environment and then returns the current count. 
 
-##global environment > new_counter enviroment < closure function environment
+##global environment > new_counter enviroment > closure function environment
 
 new_counter <- function() {
   i <- 0         ##Set i <- 0 in current (new_counter) environment? Why is this not called each time?
