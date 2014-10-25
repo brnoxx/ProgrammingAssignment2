@@ -1,3 +1,12 @@
+##This makes it possible to maintain a counter that records how many times a
+##function has been called, as the following example shows.
+##Each time new_counter is run, it creates an environment,
+##initialises the counter i in this environment, and then creates a new function.
+
+##The new function is a closure, and its environment is the enclosing environment.
+##When the closures counter_one and counter_two are run,
+##each one modifies the counter in its enclosing environment and then returns the current count. 
+
 ##global environment > new_counter enviroment < closure function environment
 
 new_counter <- function() {
