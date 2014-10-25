@@ -10,23 +10,19 @@
 ##global environment > new_counter enviroment > closure function environment
 
 new_counter <- function() {
-  i <- 0         ##Set i <- 0 in current (new_counter) environment? Why is this not called each time?
+  i <- 0         ##Set i <- 0 in current (new_counter) environment?
   function() {
-    i <<- i + 1  ##cache i to parent (new_counter) environment???
-    i            ##which i is being returned???
+    i <<- i + 1  ##cache i to parent (new_counter) environment(?)
+    i            ##return i in which environment (?)
   }
 }
-new_counter() ##what happens when new_counter() is called?
-a <- new_counter()
-b <- new_counter()
-a() ##why is this different from calling new_counter()
+new_counter() ##The first  function is run when this is called
+              ##Output is the second function only
+a <- new_counter()  ##The first function is called, i<-0, then a<-function2
+b <- new_counter()  ##The first function is called, i<-0 in a different environment, then b<-function2
+a() ##calls ONLY the second function, return(i) in the new_counter/parent environment
 ## [1] 1
 a()
 ## [1] 2
-b()
+b() ##calls ONLY the second function, return(i) in the other new_counter/parent environment
 ## [1] 1
-
-##each time a() or b() is called, exactly what happens?
-
-str(a)
-str(new_counter)
